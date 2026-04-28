@@ -53,12 +53,25 @@ _start:
     // UNDEF in the waveform rather than clean numeric values.
     //
     // TODO: Observe in the waveform how the processor handles this.
+    ADD     X9, X1, X2          // X9 = X1 + X2 = 27
+    NOP                         // first NOP command
+    NOP                         // second NOP command
+    AND     X10, X9, X3         // X10 = X9 AND X3
+    ORR     X11, X5, X9         // X11 = X5 OR X9
+    SUB     X12, X9, X7         // X12 = X9 - X7
+
+
     
 _test2:
     ADD     X9, X1, X2          // X9 = X1 + X2 = 27
-    AND     X10, X9, X3         // X10 = X9 AND X3 (HAZARD: X9 not ready!)
+    NOP                         // first NOP command
+    NOP                         // second NOP command
+    NOP                         // third NOP command
+    AND     X10, X9, X3         // X10 = X9 AND X3 
     ORR     X11, X5, X9         // X11 = X5 OR X9
     SUB     X12, X9, X7         // X12 = X9 - X7
+
+
     
     // =========================================================================
     // PART 4: NOPs for Pipeline Timing
